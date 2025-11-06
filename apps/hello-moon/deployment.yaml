@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world
+  name: hello-moon
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-world
+      app: hello-moon
   template:
     metadata:
       labels:
-        app: hello-world
+        app: hello-moon
     spec:
       containers:
-        - name: hello-world
+        - name: hello-moon
           image: nginxdemos/hello:latest
           ports:
             - containerPort: 80
