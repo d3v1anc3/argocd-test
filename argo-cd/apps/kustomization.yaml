@@ -1,3 +1,5 @@
 resources:
-  - hello-world.yaml
-  - hello-moon.yaml
+  - hello-world.dev.yaml
+  - hello-world.acc.yaml
+  - hello-moon.dev.yaml
+  - hello-moon.acc.yaml
