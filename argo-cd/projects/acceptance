@@ -1,0 +1,13 @@
+apiVersion: v1
+items:
+- apiVersion: argoproj.io/v1alpha1
+  kind: AppProject
+  metadata:
+    creationTimestamp: "2025-11-06T08:30:43Z"
+    generation: 1
+    name: acceptance
+    namespace: argocd
+    resourceVersion: "65985"
+    uid: 924860fc-8a0c-4646-a13a-fafc6e0aeb47
+  spec: {}
+  status: {}
