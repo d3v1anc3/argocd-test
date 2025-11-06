@@ -3,4 +3,14 @@ kind: AppProject
 metadata:
   name: acceptance
   namespace: argocd
-spec: {}
+spec:
+  description: Acceptance environment
+  destinations:
+  - name: '*'
+    namespace: ns-*-acc
+    server: '*'
+  sourceRepos:
+  - '*'
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace

@@ -12,6 +12,11 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
+  info:
+    - name: Purpose
+      value: Root Argo CD Application that syncs all Projects & child Apps from Git.
+    - name: Usage
+      value: Apply this file to a fresh cluster after installing Argo CD to connect to Git.
   syncPolicy:
     automated:
       prune: true
