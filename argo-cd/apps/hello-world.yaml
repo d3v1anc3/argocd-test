@@ -1,125 +1,23 @@
-apiVersion: v1
-items:
-- apiVersion: argoproj.io/v1alpha1
-  kind: Application
-  metadata:
-    creationTimestamp: "2025-11-06T08:25:47Z"
-    generation: 44
-    name: hello-world
-    namespace: argocd
-    resourceVersion: "75618"
-    uid: 6bedbbeb-c139-48df-921f-d8075697c3c1
-  spec:
-    destination:
-      namespace: ns-helloworld-dev
-      server: https://kubernetes.default.svc
-    project: development
-    source:
-      path: apps\hello-world
-      repoURL: https://github.com/d3v1anc3/argocd-test.git
-      targetRevision: HEAD
-    syncPolicy:
-      automated:
-        enabled: true
-      syncOptions:
-      - CreateNamespace=true
-  status:
-    controllerNamespace: argocd
-    health:
-      lastTransitionTime: "2025-11-06T09:35:45Z"
-      status: Healthy
-    history:
-    - deployStartedAt: "2025-11-06T08:25:59Z"
-      deployedAt: "2025-11-06T08:25:59Z"
-      id: 0
-      initiatedBy:
-        username: admin
-      revision: d66250d39ffe7f9395bdc10dd53d2d3e27c75d28
-      source:
-        path: .
-        repoURL: https://github.com/d3v1anc3/argocd-test.git
-        targetRevision: HEAD
-    - deployStartedAt: "2025-11-06T09:35:45Z"
-      deployedAt: "2025-11-06T09:35:45Z"
-      id: 1
-      initiatedBy:
-        automated: true
-      revision: 5fbb320b2109a8550ee4f2f92e2d50b6391e7db3
-      source:
-        path: .
-        repoURL: https://github.com/d3v1anc3/argocd-test.git
-        targetRevision: HEAD
-    operationState:
-      finishedAt: "2025-11-06T09:35:45Z"
-      message: successfully synced (all tasks run)
-      operation:
-        initiatedBy:
-          automated: true
-        retry:
-          limit: 5
-        sync:
-          revision: 5fbb320b2109a8550ee4f2f92e2d50b6391e7db3
-          syncOptions:
-          - CreateNamespace=true
-      phase: Succeeded
-      startedAt: "2025-11-06T09:35:45Z"
-      syncResult:
-        resources:
-        - group: ""
-          hookPhase: Running
-          kind: Service
-          message: service/hello-world configured
-          name: hello-world
-          namespace: ns-helloworld-dev
-          status: Synced
-          syncPhase: Sync
-          version: v1
-        - group: apps
-          hookPhase: Running
-          images:
-          - nginxdemos/hello:latest
-          kind: Deployment
-          message: deployment.apps/hello-world unchanged
-          name: hello-world
-          namespace: ns-helloworld-dev
-          status: Synced
-          syncPhase: Sync
-          version: v1
-        revision: 5fbb320b2109a8550ee4f2f92e2d50b6391e7db3
-        source:
-          path: .
-          repoURL: https://github.com/d3v1anc3/argocd-test.git
-          targetRevision: HEAD
-    reconciledAt: "2025-11-06T09:45:16Z"
-    resourceHealthSource: appTree
-    resources:
-    - kind: Service
-      name: hello-world
-      namespace: ns-helloworld-dev
-      status: Synced
-      version: v1
-    - group: apps
-      kind: Deployment
-      name: hello-world
-      namespace: ns-helloworld-dev
-      status: Synced
-      version: v1
-    sourceHydrator: {}
-    sourceType: Directory
-    summary:
-      images:
-      - nginxdemos/hello:latest
-    sync:
-      comparedTo:
-        destination:
-          namespace: ns-helloworld-dev
-          server: https://kubernetes.default.svc
-        source:
-          path: .
-          repoURL: https://github.com/d3v1anc3/argocd-test.git
-          targetRevision: HEAD
-      revision: 5fbb320b2109a8550ee4f2f92e2d50b6391e7db3
-      status: Synced
-kind: List
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  resourceVersion: ""
+  creationTimestamp: "2025-11-06T08:25:47Z"
+  generation: 44
+  name: hello-world
+  namespace: argocd
+  resourceVersion: "75618"
+  uid: 6bedbbeb-c139-48df-921f-d8075697c3c1
+spec:
+  destination:
+    namespace: ns-helloworld-dev
+    server: https://kubernetes.default.svc
+  project: development
+  source:
+    path: apps\hello-world
+    repoURL: https://github.com/d3v1anc3/argocd-test.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      enabled: true
+    syncOptions:
+    - CreateNamespace=true
