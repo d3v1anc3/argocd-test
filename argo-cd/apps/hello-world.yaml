@@ -15,7 +15,7 @@ items:
       server: https://kubernetes.default.svc
     project: development
     source:
-      path: .
+      path: apps\hello-world
       repoURL: https://github.com/d3v1anc3/argocd-test.git
       targetRevision: HEAD
     syncPolicy:
