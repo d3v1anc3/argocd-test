@@ -6,7 +6,7 @@ metadata:
 spec:
   description: Acceptance environment
   destinations:
-  - name: '*'
+  - name: 'app-*-acc'
     namespace: ns-*-acc
     server: '*'
   sourceRepos:

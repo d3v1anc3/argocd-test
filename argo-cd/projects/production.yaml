@@ -6,7 +6,7 @@ metadata:
 spec:
   description: Production environment
   destinations:
-  - name: '*'
+  - name: 'app-*-prd'
     namespace: ns-*-prd
     server: '*'
   sourceRepos:
