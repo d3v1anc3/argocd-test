@@ -1,3 +1,4 @@
 resources:
   - development.yaml
   - acceptance.yaml
+  - production.yaml
