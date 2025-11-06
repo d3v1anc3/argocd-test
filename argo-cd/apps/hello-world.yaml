@@ -1,23 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  creationTimestamp: "2025-11-06T08:25:47Z"
-  generation: 44
   name: hello-world
   namespace: argocd
-  resourceVersion: "75618"
-  uid: 6bedbbeb-c139-48df-921f-d8075697c3c1
 spec:
   destination:
     namespace: ns-helloworld-dev
     server: https://kubernetes.default.svc
   project: development
   source:
-    path: apps\hello-world
+    path: apps/hello-world
     repoURL: https://github.com/d3v1anc3/argocd-test.git
     targetRevision: HEAD
   syncPolicy:
     automated:
-      enabled: true
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
