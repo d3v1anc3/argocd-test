@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app.hello-world.prd
+  namespace: argocd
+spec:
+  destination:
+    namespace: ns-helloworld-prd
+    server: https://kubernetes.default.svc
+  project: production
+  source:
+    path: apps/hello-world
+    repoURL: https://github.com/d3v1anc3/argocd-test.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
