@@ -6,7 +6,7 @@ metadata:
 spec:
   description: Development environment
   destinations:
-  - name: '*'
+  - name: 'app-*-dev'
     namespace: ns-*-dev
     server: '*'
   sourceRepos:
