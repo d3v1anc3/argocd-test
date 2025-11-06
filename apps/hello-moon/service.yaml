@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-moon
+  name: hello-world
 spec:
   selector:
-    app: hello-moon
+    app: hello-world
   ports:
     - protocol: TCP
       port: 80
