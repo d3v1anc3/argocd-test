@@ -8,6 +8,12 @@ spec:
       containers:
       - name: psql
         image: ghcr.io/cloudnative-pg/postgresql:16
+        env:
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: ads-user-secret
+                key: password
         command:
           ["psql", "-h", "mydb-rw", "-U", "postgres", "-c", "ALTER ROLE ads_user WITH LOGIN;"]
       restartPolicy: OnFailure
