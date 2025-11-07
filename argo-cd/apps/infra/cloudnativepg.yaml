@@ -9,19 +9,6 @@ spec:
     repoURL: https://cloudnative-pg.github.io/charts
     targetRevision: 0.26.1
     chart: cloudnative-pg
-    helm:
-      releaseName: cloudnativepg
-      postRenderer:
-        kustomize:
-          patchesJson6902:
-            - target:
-                group: apiextensions.k8s.io
-                version: v1
-                kind: CustomResourceDefinition
-                name: poolers.postgresql.cnpg.io
-              patch: |-
-                - op: remove
-                  path: /metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration
   destination:
     server: https://kubernetes.default.svc
     namespace: cnpg-system
@@ -31,3 +18,4 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - ServerSideApply=true
