@@ -10,6 +10,6 @@ spec:
   bootstrap:
     initdb:
       database: test-db
-      user: etl
+      user: app
  
 
