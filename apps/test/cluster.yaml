@@ -9,6 +9,7 @@ spec:
     storageClass: smb-sc
   bootstrap:
     initdb:
-      scriptsFromConfigMap: database-bootstrap-sql
+      database: test-db
+      user: etl
  
 
