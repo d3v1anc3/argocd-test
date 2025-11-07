@@ -9,3 +9,8 @@ parameters:
   csi.storage.k8s.io/node-stage-secret-namespace: "default"
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
+mountOptions:
+  - uid=26         # postgres user UID in CNPG images
+  - gid=26         # postgres group GID
+  - dir_mode=0770  
+  - file_mode=0660 
