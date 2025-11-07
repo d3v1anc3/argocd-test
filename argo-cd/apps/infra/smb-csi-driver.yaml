@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/d3v1anc3/argocd-test.git
     targetRevision: main
-    path: infrastructure/smb-csi-driver
+    path: apps/infra/smb-csi-driver
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
