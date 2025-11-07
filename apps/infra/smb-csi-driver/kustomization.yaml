@@ -1,2 +1,5 @@
 resources:
-  - https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/deploy/install-driver.yaml
+  - https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/deploy/rbac-csi-smb.yaml
+  - https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/deploy/csi-smb-driver.yaml
+  - https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/deploy/csi-smb-controller.yaml
+  - https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/deploy/csi-smb-node.yaml
