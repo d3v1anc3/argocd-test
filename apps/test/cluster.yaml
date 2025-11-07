@@ -10,5 +10,6 @@ spec:
   bootstrap:
     initdb:
       database: test-db
+      owner: app
  
 
