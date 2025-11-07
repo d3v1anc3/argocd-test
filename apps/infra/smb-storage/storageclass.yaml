@@ -12,5 +12,5 @@ volumeBindingMode: Immediate
 mountOptions:
   - uid=26         # postgres user UID in CNPG images
   - gid=26         # postgres group GID
-  - dir_mode=0770  
+  - dir_mode=0700  
   - file_mode=0660 
