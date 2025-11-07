@@ -1,4 +1,5 @@
 resources:
+  - infrastructure.yaml
   - development.yaml
   - acceptance.yaml
   - production.yaml
