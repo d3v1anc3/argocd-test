@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: smb-storage
+  name: app-smb-storage-inf
   namespace: argocd
 spec:
   project: infrastructure

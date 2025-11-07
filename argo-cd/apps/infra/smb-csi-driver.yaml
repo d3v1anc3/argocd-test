@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: smb-csi-driver
+  name: app-smb-csi-driver-inf
   namespace: argocd
 spec:
   project: infrastructure
