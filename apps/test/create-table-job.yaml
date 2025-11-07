@@ -1,0 +1,43 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-address-table
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: create-address
+          image: postgres:16
+          env:
+            - name: PGHOST
+              value: mydb-rw              
+            - name: PGUSER
+              valueFrom:
+                secretKeyRef:
+                  name: mydb-app
+                  key: username
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mydb-app
+                  key: password 
+            - name: PGDATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: mydb-app
+                  key: dbname
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Creating address table..."
+              psql -v ON_ERROR_STOP=1 -c "
+              CREATE TABLE IF NOT EXISTS address (
+                  id SERIAL PRIMARY KEY,
+                  street VARCHAR(255) NOT NULL,
+                  city VARCHAR(100) NOT NULL,
+                  state VARCHAR(50),
+                  zip VARCHAR(20),
+                  country VARCHAR(50) DEFAULT 'USA'
+              );"
