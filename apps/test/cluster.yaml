@@ -16,5 +16,3 @@ spec:
       owner: ads_user      
       secret:
         name: ads-user-secret
-    postInitSQL:
-      - ALTER ROLE ads_user WITH LOGIN;
