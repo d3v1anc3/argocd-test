@@ -1,4 +1,5 @@
 resources:
+  - infra/
   - hello-world.dev.yaml
   - hello-world.acc.yaml
   - hello-world.prd.yaml
