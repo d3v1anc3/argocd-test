@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: smb-csi-driver
+  namespace: argocd
+spec:
+  project: infrastructure
+  source:
+    repoURL: https://github.com/d3v1anc3/argocd-test.git
+    targetRevision: main
+    path: infrastructure/smb-csi-driver
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

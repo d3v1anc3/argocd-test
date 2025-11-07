@@ -1,0 +1,2 @@
+resources:
+  - https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/deploy/install-driver.yaml

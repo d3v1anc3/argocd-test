@@ -1,0 +1,11 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: smb-sc
+provisioner: smb.csi.k8s.io
+parameters:
+  source: "//LaptopRob/k8s-persistent"
+  csi.storage.k8s.io/node-stage-secret-name: "smb-creds"
+  csi.storage.k8s.io/node-stage-secret-namespace: "default"
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
