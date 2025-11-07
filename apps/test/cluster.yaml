@@ -7,9 +7,12 @@ spec:
   storage:
     size: 1Gi
     storageClass: smb-sc
+  managedRoles:
+    - name: ads_user
+      options: "LOGIN"
   postgresql:
     pg_hba:      
-      - host all ads_user all scram-sha-256 # Allow ads_user to connect from anywhere over TCP 
+      - host all ads_user all scram-sha-256 # Allow ads_user to connect from anywhere over TCP     
   bootstrap:
     initdb:
       database: testdb
