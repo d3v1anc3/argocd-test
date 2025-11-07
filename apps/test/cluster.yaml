@@ -7,3 +7,12 @@ spec:
   storage:
     size: 1Gi
     storageClass: smb-sc
+  postgresql:
+    pg_hba:      
+      - host all ads_user all md5 # Allow ads_user to connect from anywhere over TCP with md5/auth
+  bootstrap:
+    initdb:
+      database: testdb
+      owner: ads_user      
+      secret:
+        name: ads-user-secret
