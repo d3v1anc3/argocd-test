@@ -1,0 +1,63 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: etl-content-pgloader
+spec:
+  # Every 5 minutes (for testing)
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: pgloader
+            image: dimitri/pgloader:latest
+            env:
+              - name: MSSQL_HOST
+                valueFrom:
+                  secretKeyRef:
+                    name: etl
+                    key: mssql_host
+              - name: MSSQL_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: etl
+                    key: mssql_user
+              - name: MSSQL_PASS
+                valueFrom:
+                  secretKeyRef:
+                    name: etl
+                    key: mssql_password
+              - name: MSSQL_DB
+                valueFrom:
+                  secretKeyRef:
+                    name: etl
+                    key: mssql_db
+
+              - name: PG_HOST
+                value: mydb-rw 
+              - name: PG_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: mydb-app
+                    key: username
+              - name: PG_PASS
+                valueFrom:
+                  secretKeyRef:
+                    name: mydb-app
+                    key: password 
+              - name: PG_DB
+                valueFrom:
+                  secretKeyRef:
+                    name: mydb-app
+                    key: dbname
+            command:
+              - /bin/sh
+              - -c
+              - |
+                echo "[INFO] Starting pgloader job at $(date)"
+                pgloader \
+                  "mssql://$MSSQL_USER:$MSSQL_PASS@$MSSQL_HOST/$MSSQL_DB" \
+                  "postgresql://$PG_USER:$PG_PASS@$PG_HOST/$PG_DB" \
+                  --table Content
