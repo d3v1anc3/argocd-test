@@ -2,3 +2,4 @@ resources:
   - cloudnativepg.yaml
   - smb-csi-driver.yaml
   - smb-storage.yaml
+  - vault-secrets-operator.yaml
