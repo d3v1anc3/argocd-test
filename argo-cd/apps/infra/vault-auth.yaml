@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault-auth
+  namespace: argocd
+spec:
+  project: infrastructure
+  source:
+    repoURL: https://github.com/d3v1anc3/argocd-test.git
+    path: apps/infra/vault-secrets-operator
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vault-secrets-operator
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
