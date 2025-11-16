@@ -2,5 +2,7 @@ resources:
   - cloudnativepg.yaml
   - smb-csi-driver.yaml
   - smb-storage.yaml
-  - vault-secrets-operator.yaml
-  - vault-auth.yaml
+#  - vault-secrets-operator.yaml
+#  - vault-auth.yaml
+  - external-secrets-operator.yaml
+  - azure-key-vault.yaml
