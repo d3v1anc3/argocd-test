@@ -6,3 +6,4 @@ resources:
 #  - vault-auth.yaml
   - external-secrets-operator.yaml
   - azure-key-vault.yaml
+  - kyverno.yaml
