@@ -5,7 +5,7 @@ metadata:
 data:
   content-minimal.tsv.staged.load: |
     LOAD CSV
-        FROM '/shared/clean.tsv'
+        FROM '/data/etl/clean.tsv'
         INTO ${URI}
         TARGET TABLE content_staging
         WITH
