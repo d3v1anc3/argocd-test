@@ -16,6 +16,7 @@ spec:
             args:
               - |
                 echo "[INFO] Exporting data with bcp..."
+                mkdir -p /data/etl
                 export PATH=$PATH:/opt/mssql-tools/bin
                 bcp "SELECT Id, FileIdentifier, Title, Artist, DurationInSeconds, ContentType, FileContentType FROM dbo.Content WHERE DurationInSeconds > 0 AND ContentType = 'Xenox' AND FileContentType = 'Audio'" \
                   queryout "/data/etl/content.tsv" -w -t "\t" -r "\n" \
