@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: smb-tracksapi-pod
+  name: tracksapi
 spec:
   containers:
   - name: app
