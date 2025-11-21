@@ -25,7 +25,7 @@ spec:
               - name: URI
                 valueFrom:
                   secretKeyRef:
-                    name: mydb-app
+                    name: postgres-app
                     key: uri                
             volumeMounts:
               - name: data
