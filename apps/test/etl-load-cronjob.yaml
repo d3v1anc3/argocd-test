@@ -16,7 +16,7 @@ spec:
             args:
               - |
                 echo "[INFO] Cleaning data..."
-                iconv -f UTF-16LE -t UTF-8 /data/etl/content.tsv | tr -d '\000' > /data/etl/clean.tsv
+                iconv -f UTF-16LE -t UTF-8 /data/etl/content.tsv | tr -d '\000' | sed '1s/^\xEF\xBB\xBF//' > /data/etl/clean.tsv
                 echo "[INFO] Creating script..."
                 sed "s|\${URI}|$URI|g" /scripts/content-minimal.tsv.staged.load > /tmp/load-script
                 echo "[INFO] Loading data..."
