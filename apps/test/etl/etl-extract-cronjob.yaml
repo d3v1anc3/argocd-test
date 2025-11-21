@@ -1,0 +1,60 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: etl-extract
+spec:
+  schedule: "0 0 1 1 *" # runs once per year on Jan 1st
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: mssql-export
+            image: mcr.microsoft.com/mssql-tools
+            command: [ "/bin/sh", "-c" ]
+            args:
+              - |
+                echo "[INFO] Exporting data with bcp..."
+                bcp "SELECT Id, FileIdentifier, Title, Artist, DurationInSeconds, ContentType, FileContentType FROM dbo.Content WHERE DurationInSeconds > 0 AND ContentType = 'Xenox' AND FileContentType = 'Audio'" \
+                  queryout "/data/etl/content.tsv" -w -t "\t" -r "\n" \
+                  -S "$MSSQL_HOST" -U "$MSSQL_USER" -P "$MSSQL_PASS"
+            env:
+              - name: MSSQL_HOST
+                valueFrom:
+                  configMapKeyRef:
+                    name: etl-config
+                    key: portal-database-ip
+              - name: MSSQL_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: etl-secret
+                    key: portal-database-username
+              - name: MSSQL_PASS
+                valueFrom:
+                  secretKeyRef:
+                    name: etl-secret
+                    key: portal-database-password
+            volumeMounts:
+              - name: shared
+                mountPath: /shared
+
+          - name: pgloader
+            image: dimitri/pgloader:latest            
+            command: [ "/bin/sh", "-c" ]
+            args:
+              - |
+                echo "[INFO] Cleaning data..."
+                iconv -f UTF-16LE -t UTF-8 /shared/Content.tsv | tr -d '\000' > /shared/clean.tsv
+                echo "[INFO] Loading data..."
+                pgloader /scripts/content-minimal.tsv.staged.load
+            volumeMounts:
+              - name: scripts
+                mountPath: /scripts                
+          volumes:
+          - name: data
+            persistentVolumeClaim:
+              claimName: smb-test-pvc
+          - name: scripts
+            configMap:
+              name: etl-pgloader-script

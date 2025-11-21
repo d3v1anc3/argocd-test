@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: etl-pgloader-script
+data:
+  content-minimal.tsv.staged.load: |
+    LOAD CSV
+         FROM '/shared/clean.tsv'
+         WITH ENCODING UTF-8
+              FIELDS TERMINATED BY '\t'
+              NULL AS ''
+         INTO postgresql://

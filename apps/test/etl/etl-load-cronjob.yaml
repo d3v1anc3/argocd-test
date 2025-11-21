@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: etl-load
+spec:
+  schedule: "0 0 1 1 *" # runs once per year on Jan 1st
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: pgloader
+            image: dimitri/pgloader:latest            
+            command: [ "/bin/sh", "-c" ]
+            args:
+              - |
+                echo "[INFO] Cleaning data..."
+                iconv -f UTF-16LE -t UTF-8 /data/etl/content.tsv | tr -d '\000' > /data/etl/clean.tsv
+                echo "[INFO] Loading data..."
+                pgloader /scripts/content-minimal.tsv.staged.load
+            volumeMounts:
+              - name: data
+                mountPath: /data            
+              - name: scripts
+                mountPath: /scripts                
+          volumes:
+          - name: data
+            persistentVolumeClaim:
+              claimName: etl-data-pvc          
+          - name: scripts
+            configMap:
+              name: etl-pgloader-script
