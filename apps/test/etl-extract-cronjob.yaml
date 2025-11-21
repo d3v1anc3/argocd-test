@@ -36,25 +36,10 @@ spec:
                     name: etl-secret
                     key: portal-database-password
             volumeMounts:
-              - name: shared
-                mountPath: /shared
-
-          - name: pgloader
-            image: dimitri/pgloader:latest            
-            command: [ "/bin/sh", "-c" ]
-            args:
-              - |
-                echo "[INFO] Cleaning data..."
-                iconv -f UTF-16LE -t UTF-8 /shared/Content.tsv | tr -d '\000' > /shared/clean.tsv
-                echo "[INFO] Loading data..."
-                pgloader /scripts/content-minimal.tsv.staged.load
-            volumeMounts:
-              - name: scripts
-                mountPath: /scripts                
+              - name: data
+                mountPath: /data                                  
           volumes:
           - name: data
             persistentVolumeClaim:
               claimName: smb-test-pvc
-          - name: scripts
-            configMap:
-              name: etl-pgloader-script
+           
