@@ -6,4 +6,4 @@ resources:
   - hello-moon.dev.yaml
   - hello-moon.acc.yaml
   - hello-moon.prd.yaml
-  - tracksapi.dev.yaml
+  #- tracksapi.dev.yaml
