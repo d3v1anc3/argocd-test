@@ -5,8 +5,33 @@ metadata:
 data:
   content-minimal.tsv.staged.load: |
     LOAD CSV
-         FROM '/shared/clean.tsv'
-         WITH ENCODING UTF-8
-              FIELDS TERMINATED BY '\t'
-              NULL AS ''
-         INTO postgresql://
+        FROM '/shared/clean.tsv'
+        INTO ${URI}
+        TARGET TABLE content_staging
+        WITH
+              truncate,
+              skip header = 0,
+              fields terminated by '\t',
+              fields not enclosed,
+              batch rows = 250000,
+              batch concurrency = 4
+
+        BEFORE LOAD DO
+          $$
+          CREATE TABLE IF NOT EXISTS public.content_staging
+              (
+              id uuid NOT NULL,
+              fileidentifier text COLLATE pg_catalog."default",
+              artist text COLLATE pg_catalog."default",
+              title text COLLATE pg_catalog."default",
+              durationinseconds double precision
+              )
+          $$
+
+        BEFORE LOAD DO
+          $$ ALTER TABLE public.content_staging OWNER TO postgres; $$
+
+        AFTER LOAD DO
+              $$ DROP TABLE IF EXISTS content_old; $$,
+              $$ ALTER TABLE IF EXISTS content RENAME TO content_old; $$,
+              $$ ALTER TABLE content_staging RENAME TO content; $$;

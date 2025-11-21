@@ -19,6 +19,12 @@ spec:
                 iconv -f UTF-16LE -t UTF-8 /data/etl/content.tsv | tr -d '\000' > /data/etl/clean.tsv
                 echo "[INFO] Loading data..."
                 pgloader /scripts/content-minimal.tsv.staged.load
+            env:
+              - name: URI
+                valueFrom:
+                  secretKeyRef:
+                    name: mydb-app
+                    key: uri                
             volumeMounts:
               - name: data
                 mountPath: /data            
