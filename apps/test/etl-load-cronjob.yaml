@@ -11,7 +11,7 @@ spec:
           restartPolicy: Never
           containers:
           - name: pgloader
-            image: dimitri/pgloader:latest            
+            image: dimitri/pgloader:v3.6.7           
             command: [ "/bin/sh", "-c" ]
             args:
               - |
