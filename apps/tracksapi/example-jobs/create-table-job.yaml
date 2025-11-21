@@ -11,21 +11,21 @@ spec:
           image: postgres:16
           env:
             - name: PGHOST
-              value: mydb-rw              
+              value: postgres-rw              
             - name: PGUSER
               valueFrom:
                 secretKeyRef:
-                  name: mydb-app
+                  name: postgres-app
                   key: username
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mydb-app
+                  name: postgres-app
                   key: password 
             - name: PGDATABASE
               valueFrom:
                 secretKeyRef:
-                  name: mydb-app
+                  name: postgres-app
                   key: dbname
           command:
             - /bin/sh
