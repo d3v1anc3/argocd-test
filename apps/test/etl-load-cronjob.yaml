@@ -27,7 +27,7 @@ spec:
           volumes:
           - name: data
             persistentVolumeClaim:
-              claimName: etl-data-pvc          
+              claimName: smb-test-pvc        
           - name: scripts
             configMap:
               name: etl-pgloader-script
