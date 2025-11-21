@@ -1,16 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: smb-test-pod
+  name: smb-tracksapi-pod
 spec:
   containers:
   - name: app
     image: busybox
     command: ["sleep", "3600"]
-    volumeMounts:
-    - mountPath: "/data"
-      name: testvol
-  volumes:
-  - name: testvol
-    persistentVolumeClaim:
-      claimName: smb-test-pvc

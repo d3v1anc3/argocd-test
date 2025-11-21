@@ -35,7 +35,7 @@ spec:
           volumes:
           - name: data
             persistentVolumeClaim:
-              claimName: smb-test-pvc        
+              claimName: smb-tracksapi-pvc        
           - name: scripts
             configMap:
               name: etl-pgloader-script
