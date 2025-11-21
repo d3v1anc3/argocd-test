@@ -4,4 +4,3 @@ metadata:
   name: etl-config
 data:
   portal-database-ip: "192.168.254.9"
-  portal-database-username: "portal_user_productie"
