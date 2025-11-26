@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tracksapi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tracksapi
+  template:
+    metadata:
+      labels:
+        app: tracksapi
+    spec:
+      imagePullSecrets:
+        - name: acr-secret
+      containers:
+      - name: tracksapi
+        image: crrvmaindev.azurecr.io/tracksapi:1.0.0
+        ports:
+          - containerPort: 80
+        env:
+          - name: ConnectionStrings__Portal
+            valueFrom:
+              secretKeyRef:
+                name: postgres-app
+                key: uri
