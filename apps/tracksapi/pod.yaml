@@ -11,7 +11,7 @@ spec:
     ports:
         - containerPort: 80
     env:
-      - name: ConnectionString_Portal
+      - name: ConnectionString__Portal
         valueFrom:
           secretKeyRef:
             name: postgres-app
