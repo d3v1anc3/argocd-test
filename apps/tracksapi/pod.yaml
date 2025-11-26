@@ -3,6 +3,8 @@ kind: Pod
 metadata:
   name: tracksapi-pod
 spec:
+  imagePullSecrets:
+    - name: acr-secret
   containers:
   - name: tracksapi
     image: crrvmaindev.azurecr.io/tracksapi:1.0.0
