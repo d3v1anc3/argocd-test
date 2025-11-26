@@ -10,3 +10,9 @@ spec:
     image: crrvmaindev.azurecr.io/tracksapi:1.0.0
     ports:
         - containerPort: 80
+    env:
+      - name: ConnectionString_Portal
+        valueFrom:
+          secretKeyRef:
+            name: postgres-app
+            key: uri          
