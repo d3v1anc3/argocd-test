@@ -16,12 +16,10 @@ spec:
         - name: acr-secret
       containers:
       - name: tracksapi
-        image: crrvmaindev.azurecr.io/tracksapi:1.0.1
+        image: crrvmaindev.azurecr.io/tracksapi:1.0.2
         ports:
           - containerPort: 80
         env:
-          - name: ConnectionStrings__Portal
-            value: "Host=$(PGHOST);Port=$(PGPORT);Database=$(PGDATABASE);Username=$(PGUSER);Password=$(PGPASSWORD)"
           - name: PGHOST
             valueFrom:
               secretKeyRef:
