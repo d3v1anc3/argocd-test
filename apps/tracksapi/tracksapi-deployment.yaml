@@ -16,7 +16,7 @@ spec:
         - name: acr-secret
       containers:
       - name: tracksapi
-        image: crrvmaindev.azurecr.io/tracksapi:1.0.0
+        image: crrvmaindev.azurecr.io/tracksapi:1.0.1
         ports:
           - containerPort: 80
         env:
