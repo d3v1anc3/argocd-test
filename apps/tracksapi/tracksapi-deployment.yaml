@@ -21,6 +21,6 @@ spec:
           - containerPort: 80
         envFrom:
           - configMapRef:
-            name: tracksapi-config
+              name: tracksapi-config
           - secretRef:
-            name: postgres-app        
+              name: postgres-app        
