@@ -21,7 +21,29 @@ spec:
           - containerPort: 80
         env:
           - name: ConnectionStrings__Portal
+            value: "Host=$(PGHOST);Port=$(PGPORT);Database=$(PGDATABASE);Username=$(PGUSER);Password=$(PGPASSWORD)"
+          - name: PGHOST
             valueFrom:
               secretKeyRef:
                 name: postgres-app
-                key: uri
+                key: host
+          - name: PGPORT
+            valueFrom:
+              secretKeyRef:
+                name: postgres-app
+                key: port
+          - name: PGDATABASE
+            valueFrom:
+              secretKeyRef:
+                name: postgres-app
+                key: dbname
+          - name: PGUSER
+            valueFrom:
+              secretKeyRef:
+                name: postgres-app
+                key: username
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-app
+                key: password
