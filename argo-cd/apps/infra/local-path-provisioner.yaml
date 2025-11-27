@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-local-path-provisioner-inf
+  namespace: argocd
+spec:
+  project: infrastructure
+  source:
+    repoURL: https://github.com/d3v1anc3/argocd-test.git
+    targetRevision: main
+    path: apps/infra/local-path-provisioner
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Replace=true

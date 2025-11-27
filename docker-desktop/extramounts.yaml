@@ -1,0 +1,9 @@
+machine:
+  kubelet:
+    extraMounts:
+      - destination: /mnt/docker-data
+        type: bind
+        source: /run/desktop/mnt/host/c/DockerData
+        options:
+          - rbind
+          - rw
