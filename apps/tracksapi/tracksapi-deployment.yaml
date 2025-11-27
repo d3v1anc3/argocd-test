@@ -16,32 +16,11 @@ spec:
         - name: acr-secret
       containers:
       - name: tracksapi
-        image: crrvmaindev.azurecr.io/tracksapi:1.0.2
+        image: crrvmaindev.azurecr.io/tracksapi:1.0.3
         ports:
           - containerPort: 80
-        env:
-          - name: PGHOST
-            valueFrom:
-              secretKeyRef:
-                name: postgres-app
-                key: host
-          - name: PGPORT
-            valueFrom:
-              secretKeyRef:
-                name: postgres-app
-                key: port
-          - name: PGDATABASE
-            valueFrom:
-              secretKeyRef:
-                name: postgres-app
-                key: dbname
-          - name: PGUSER
-            valueFrom:
-              secretKeyRef:
-                name: postgres-app
-                key: username
-          - name: PGPASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: postgres-app
-                key: password
+        envFrom:
+          - configMapRef:
+            name: tracksapi-configmap
+          - secretRef:
+            name: postgres-app        
