@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: tracksapi-config
 data:
-  ApplyMigrations: true
+  ApplyMigrations: "true"
