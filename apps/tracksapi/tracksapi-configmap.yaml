@@ -4,3 +4,6 @@ metadata:
   name: tracksapi-config
 data:
   ApplyMigrations: "true"
+  LogPath: "/var/log/tracksApi"
+  Mp3Path: "/data/mp3"
+  AacPath: "/data/aac"
