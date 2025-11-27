@@ -22,9 +22,11 @@ data:
               (
               id uuid NOT NULL,
               fileidentifier text COLLATE pg_catalog."default",
-              artist text COLLATE pg_catalog."default",
               title text COLLATE pg_catalog."default",
-              durationinseconds double precision
+              artist text COLLATE pg_catalog."default",              
+              durationinseconds double precision,
+              contenttype text COLLATE pg_catalog."default",
+              filecontenttype text COLLATE pg_catalog."default",
               )
           $$
 
