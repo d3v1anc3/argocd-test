@@ -6,4 +6,4 @@ data:
   ApplyMigrations: "true"
   LogPath: "/var/log/tracksApi"
   Mp3Path: "/mnt/content/Audio_XenoxContent_HqMp3"
-  AacPath: "/mnt/content/Audio_XenoxContent_Aac
+  AacPath: "/mnt/content/Audio_XenoxContent_Aac"
