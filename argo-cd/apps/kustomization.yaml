@@ -3,7 +3,5 @@ resources:
   - hello-world.dev.yaml
   - hello-world.acc.yaml
   - hello-world.prd.yaml
-  - hello-moon.dev.yaml
-  - hello-moon.acc.yaml
-  - hello-moon.prd.yaml
   - tracksapi.dev.yaml
+  - tracksapi.acc.yaml

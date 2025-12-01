@@ -2,7 +2,7 @@ resources:
   - cloudnativepg.yaml
   - smb-csi-driver.yaml
   - smb-storage.yaml
-  - local-path-provisioner.yaml
+#  - local-path-provisioner.yaml
 #  - vault-secrets-operator.yaml
 #  - vault-auth.yaml
   - external-secrets-operator.yaml
