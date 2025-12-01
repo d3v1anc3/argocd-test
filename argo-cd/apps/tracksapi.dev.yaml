@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app.tracksapi.acc
+  name: app.tracksapi.dev
   namespace: argocd
 spec:
   destination:
-    namespace: ns-tracksapi-acc
+    namespace: ns-tracksapi-dev
     server: https://kubernetes.default.svc
   project: development
   source:
