@@ -7,7 +7,7 @@ spec:
   destination:
     namespace: ns-tracksapi-dev
     server: https://kubernetes.default.svc
-  project: development
+  project: acceptance
   source:
     path: apps/tracksapi/overlays/acc
     repoURL: https://github.com/d3v1anc3/argocd-test.git
