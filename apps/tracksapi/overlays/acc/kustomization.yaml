@@ -20,4 +20,4 @@ patches:
   - path: patch-cluster.yaml
     target:
       kind: Cluster
-      name: cluster.yaml
+      name: postgres
