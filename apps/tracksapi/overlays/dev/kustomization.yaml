@@ -13,6 +13,10 @@ patches:
     target:
       kind: ExternalSecret
       name: etl-external-secret      
+  - path: patch-etl-configmap.yaml
+    target:
+      kind: ConfigMap
+      name: etl-config         
   - path: patch-cluster.yaml
     target:
       kind: Cluster

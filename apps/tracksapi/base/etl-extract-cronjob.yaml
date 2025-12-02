@@ -20,7 +20,7 @@ spec:
                 export PATH=$PATH:/opt/mssql-tools/bin
                 bcp "SELECT Id, FileIdentifier, Title, Artist, DurationInSeconds, ContentType, FileContentType FROM dbo.Content WHERE DurationInSeconds > 0 AND ContentType = 'Xenox' AND FileContentType = 'Audio'" \
                   queryout "/data/etl/content.tsv" -w -t "\t" -r "\n" \
-                  -S "$MSSQL_HOST" -U "$MSSQL_USER" -P "$MSSQL_PASS"
+                  -S "$MSSQL_HOST" -U "$MSSQL_USER" -P "$MSSQL_PASS" -d "$MSSQL_DB"
             env:
               - name: MSSQL_HOST
                 valueFrom:
@@ -37,6 +37,11 @@ spec:
                   secretKeyRef:
                     name: etl-secret
                     key: portal-database-password
+              - name: MSSQL_DB
+                valueFrom:
+                  configMapKeyRef:
+                    name: etl-config
+                    key: portal-database-name                    
             volumeMounts:
               - name: data
                 mountPath: /data                                  
