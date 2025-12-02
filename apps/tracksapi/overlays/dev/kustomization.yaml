@@ -9,6 +9,10 @@ patches:
     target:
       kind: ExternalSecret
       name: acr-externalsecret
+  - path: patch-etl-externalsecret.yaml
+    target:
+      kind: ExternalSecret
+      name: etl-externalsecret      
   - path: patch-cluster.yaml
     target:
       kind: Cluster
