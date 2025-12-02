@@ -2,6 +2,7 @@ resources:
 - acr-externalsecret.yaml
 - cluster.yaml
 - etl-configmap.yaml
+- etl-externalsecret.yaml
 - etl-extract-cronjob.yaml
 - etl-pgloader-script-configmap.yaml
 - persistentvolumeclaim.yaml
