@@ -1,5 +1,11 @@
 resources:
   - ../../base
 patches:
-  - patch-acr-externalsecret.yaml
-  - patch-persistentvolumeclaim.yaml
+  - path: patch-persistentvolumeclaim.yaml
+    target:
+      kind: PersistentVolumeClaim
+      name: smb-tracksapi-pvc
+  - path: patch-acr-externalsecret.yaml
+    target:
+      kind: ExternalSecret
+      name: acr-externalsecret
