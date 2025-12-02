@@ -12,7 +12,7 @@ patches:
   - path: patch-etl-externalsecret.yaml
     target:
       kind: ExternalSecret
-      name: etl-externalsecret      
+      name: etl-external-secret      
   - path: patch-cluster.yaml
     target:
       kind: Cluster
