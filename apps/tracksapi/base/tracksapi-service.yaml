@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: tracksapi-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: tracksapi
   ports:

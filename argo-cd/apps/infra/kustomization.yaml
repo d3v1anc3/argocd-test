@@ -8,3 +8,4 @@ resources:
   - external-secrets-operator.yaml
   - azure-key-vault.yaml
   - kyverno.yaml
+  - traefik.yaml

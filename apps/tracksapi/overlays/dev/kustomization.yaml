@@ -21,3 +21,7 @@ patches:
     target:
       kind: Cluster
       name: postgres
+  - path: patch-tracksapi-ingress.yaml
+    target:
+      kind: Ingress
+      name: tracksapi-ingress      
