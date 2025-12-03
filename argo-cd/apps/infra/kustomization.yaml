@@ -9,3 +9,4 @@ resources:
   - azure-key-vault.yaml
   - kyverno.yaml
   - traefik.yaml
+  - rabbitmq-cluster-operator.yaml
