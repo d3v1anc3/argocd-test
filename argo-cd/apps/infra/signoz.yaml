@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "https://charts.signoz.io"
+    repoURL: https://charts.signoz.io
     chart: signoz
     targetRevision: 0.104.0
     helm:
