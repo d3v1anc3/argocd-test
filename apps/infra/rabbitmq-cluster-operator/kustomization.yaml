@@ -1,2 +1,11 @@
 resources:
   - https://github.com/rabbitmq/cluster-operator/releases/download/v2.17.2/cluster-operator.yml
+
+namespace: app-rabbitmq-system-inf
+
+patches:
+  - target:
+      kind: Namespace
+      name: rabbitmq-system
+    patch: |
+      $patch: delete
