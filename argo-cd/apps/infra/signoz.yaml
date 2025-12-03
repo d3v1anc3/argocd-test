@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: signoz
+  name: app-signoz-inf
   namespace: argocd
 spec:
-  project: default
+  project: infrastructure
   source:
     repoURL: https://charts.signoz.io
     chart: signoz
@@ -15,7 +15,7 @@ spec:
         - signoz-values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: signoz
+    namespace: ns-signoz-inf
   syncPolicy:
     automated:
       prune: true
