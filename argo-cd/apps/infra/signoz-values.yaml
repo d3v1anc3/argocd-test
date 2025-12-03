@@ -1,0 +1,23 @@
+platform: kubernetes
+
+otelCollector:
+  enabled: true
+  config:
+    receivers:
+      k8s_cluster:
+        collection_interval: 10s
+      kubeletstats:
+        collection_interval: 15s
+        insecure: true
+    processors:
+      batch:
+        timeout: 10s
+    exporters:
+      otlp:
+        endpoint: signoz-query-service:4317
+    service:
+      pipelines:
+        metrics:
+          receivers: [k8s_cluster, kubeletstats]
+          processors: [batch]
+          exporters: [otlp]
