@@ -6,7 +6,7 @@ metadata:
 spec:
   description: Infrastructure
   destinations:
-  - name: '*'
+  - name: 'app-*-inf'
     namespace: '*'
     server: '*'
   sourceRepos:

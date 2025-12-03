@@ -11,7 +11,7 @@ spec:
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
-    namespace: vault-secrets-operator
+    namespace: ns-vault-secrets-operator-inf
   syncPolicy:
     automated:
       prune: true

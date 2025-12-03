@@ -15,7 +15,7 @@ spec:
           value: LoadBalancer
   destination:
     server: https://kubernetes.default.svc
-    namespace: traefik
+    namespace: ns-traefik-inf
   syncPolicy:
     automated:
       prune: true
