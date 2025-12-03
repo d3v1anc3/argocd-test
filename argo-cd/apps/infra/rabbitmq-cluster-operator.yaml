@@ -6,9 +6,9 @@ metadata:
 spec:
   project: infrastructure
   source:
-    repoURL: oci://registry-1.docker.io/bitnamicharts/rabbitmq-cluster-operator
-    targetRevision: 4.4.34
-    chart: rabbitmq-cluster-operator
+    repoURL: https://github.com/d3v1anc3/argocd-test.git
+    targetRevision: main
+    path: apps/infra/rabbitmq-cluster-operator
   destination:
     server: https://kubernetes.default.svc
     namespace: ns-rabbitmq-system-inf
