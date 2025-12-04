@@ -14,12 +14,14 @@ spec:
         controller:
           runOnMaster: false
           cloudConfig:
-            disableAzureCloudConfig: true          
+            disableAzureCloudConfig: true
           extraArgs:
             - --allow-empty-cloud-config=true
         node:
           cloudConfig:
             disableAzureCloudConfig: true
+          extraArgs:
+            - --allow-empty-cloud-config=true
           tolerations:
             - key: node-role.kubernetes.io/worker
               operator: Exists
