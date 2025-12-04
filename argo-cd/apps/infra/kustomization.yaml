@@ -10,4 +10,4 @@ resources:
   - kyverno.yaml
   - traefik.yaml
   - rabbitmq-cluster-operator.yaml
-  - signoz.yaml
+#  - signoz.yaml
