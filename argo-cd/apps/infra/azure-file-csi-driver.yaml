@@ -15,17 +15,11 @@ spec:
           runOnMaster: false
           extraArgs:
             - --allow-empty-cloud-config=true
-            - --cloud-config-secret-name=azure-cloud-provider
-            - --cloud-config-secret-namespace=kube-system
         node:
           tolerations:
             - key: node-role.kubernetes.io/worker
               operator: Exists
               effect: NoSchedule
-        cloudConfig:
-          useSecret: true
-          name: azure-cloud-provider
-          namespace: kube-system
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
