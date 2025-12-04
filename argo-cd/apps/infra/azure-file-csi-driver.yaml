@@ -9,19 +9,6 @@ spec:
     repoURL: https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/charts
     chart: azurefile-csi-driver
     targetRevision: 1.34.2   
-    helm:
-      values: |
-        controller:
-          runOnMaster: false
-          nodeSelector:
-            kubernetes.io/os: linux
-          affinity:
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                nodeSelectorTerms:
-                  - matchExpressions:
-                      - key: node-role.kubernetes.io/worker
-                        operator: Exists
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
