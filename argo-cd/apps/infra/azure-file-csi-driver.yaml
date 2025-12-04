@@ -12,7 +12,7 @@ spec:
     helm:
       values: |
         controller:
-          runOnMaster: true
+          runOnMaster: false
         node:
           tolerations:
             - key: node-role.kubernetes.io/worker
