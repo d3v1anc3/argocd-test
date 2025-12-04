@@ -13,11 +13,15 @@ spec:
       values: |
         controller:
           runOnMaster: false
-        node:
-          tolerations:
-            - key: node-role.kubernetes.io/worker
-              operator: Exists
-              effect: NoSchedule
+          nodeSelector:
+            kubernetes.io/os: linux
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: node-role.kubernetes.io/worker
+                        operator: Exists
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
