@@ -13,6 +13,8 @@ spec:
       values: |
         controller:
           runOnMaster: false
+          cloudConfig:
+            disableAzureCloudConfig: true          
           extraArgs:
             - --allow-empty-cloud-config=true
         node:
