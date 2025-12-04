@@ -6,9 +6,9 @@ resources:
 #  - signoz.yaml
 
 ## Storage
-  - azure-file-csi-driver.yaml
   - smb-csi-driver.yaml
   - smb-storage.yaml
+#  - azure-file-csi-driver.yaml  
 #  - local-path-provisioner.yaml
 
 ## Secrets
