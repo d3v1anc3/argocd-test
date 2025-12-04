@@ -18,6 +18,8 @@ spec:
           extraArgs:
             - --allow-empty-cloud-config=true
         node:
+          cloudConfig:
+            disableAzureCloudConfig: true
           tolerations:
             - key: node-role.kubernetes.io/worker
               operator: Exists
