@@ -1,13 +1,19 @@
 resources:
   - cloudnativepg.yaml
+  - rabbitmq-cluster-operator.yaml
+  - kyverno.yaml
+  - traefik.yaml
+#  - signoz.yaml
+
+## Storage
+  - azure-file-csi-driver.yaml
   - smb-csi-driver.yaml
   - smb-storage.yaml
 #  - local-path-provisioner.yaml
-#  - vault-secrets-operator.yaml
-#  - vault-auth.yaml
+
+## Secrets
   - external-secrets-operator.yaml
   - azure-key-vault.yaml
-  - kyverno.yaml
-  - traefik.yaml
-  - rabbitmq-cluster-operator.yaml
-#  - signoz.yaml
+#  - vault-secrets-operator.yaml
+#  - vault-auth.yaml
+
