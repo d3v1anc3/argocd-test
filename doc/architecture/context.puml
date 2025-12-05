@@ -1,0 +1,24 @@
+@startuml Xenox Kubernetes Context Diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+Boundary(onPrem, "Xenox Capelle") {
+  System(k8s, "Cluster", "Kubernetes Cluster")
+}
+
+Boundary(cloud, "Cloud") {
+  System_Ext(git, "Azure DevOps", "Git - Source Code Repository\n\ndev.azure.com\\nforza")
+  System_Ext(ociApp, "Azure Container Registry", "OCI Image Store\n\nxenox.azurecr.io")
+  System_Ext(kv, "Azure Keyvault", "External secrets provider\n\nkv-xenox-<env>")  
+
+  Rel(k8s, git, " loads cluster configuration from", "Argo CD")
+  Rel(k8s, git, " loads application manifest from", "Argo CD")
+  Rel(k8s, ociApp, " pulls app containers from")
+  Rel(k8s, kv, " loads secrets from")  
+}
+
+Boundary(internet, "Internet") {
+  System_Ext(ociInf, "External Container Registries", "OCI Image Store")
+  Rel(k8s, ociInf, " pulls infra containers from")
+}
+
+@enduml

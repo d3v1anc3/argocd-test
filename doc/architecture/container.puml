@@ -1,0 +1,34 @@
+@startuml Xenox Kubernetes Container Diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+  System_Boundary(k8s, "Cluster", "Kubernetes Cluster") {
+    Container(kapi, "Kubernetes API")
+    Container(argocd, "Argo-CD")
+    Rel(argocd, kapi, "applies manifests to")
+
+    Container(controllerManager, "Kube Controller Manager")
+    Rel(kapi, controllerManager, "instructs")
+
+    Container(kubelet, "Kubelet")
+    Rel(kapi, kubelet, "instructs")    
+
+    Container_Ext(apps, "Applications")
+    Rel(kubelet, apps, "runs containers for")    
+    Rel(controllerManager, apps, "manages desired state of")
+
+    Container(eso, "External Secrets Operator")    
+    Rel(kapi, eso, "instructs")
+    Rel(eso, apps, "supplies secrets to")
+  }
+
+  System_Ext(git, "Azure DevOps", "Git - Source Code Repository\n\ndev.azure.com\\nforza")
+  System_Ext(ociApp, "Azure Container Registry", "OCI Image Store\n\nxenox.azurecr.io")
+  System_Ext(kv, "Azure Keyvault", "External secrets provider\n\nkv-xenox-<env>")  
+  System_Ext(ociInf, "External Container Registries", "OCI Image Store")
+
+  Rel_R(argocd, git, " loads cluster configuration from")
+  Rel_R(argocd, git, " loads application manifest from")
+  Rel_R(kubelet, ociApp, " pulls app containers from")
+  Rel(kubelet, ociInf, " pulls infra containers from")
+  Rel_L(eso, kv, " loads secrets from")    
+@enduml

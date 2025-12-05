@@ -1,0 +1,49 @@
+{
+    "cSpell.language": "en,nl",
+    "cSpell.words": [
+        "ALSA",
+        "Avalonia",
+        "bootable",
+        "deploymentstrategie",
+        "dotnet",
+        "enduml",
+        "Forza",
+        "Interactor",
+        "Kaseya",
+        "keyvault",
+        "lifecyclebeheer",
+        "PBI's",
+        "productincrement",
+        "pvxid",
+        "Qube",
+        "Serilog",
+        "spatialized",
+        "startuml",
+        "Templating",
+        "Velden",
+        "Xenox"
+    ],
+    
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": true,
+            "strings": true
+        }
+    },
+
+    "plantuml.exportFormat": "svg",
+    "plantuml.exportOutDir": ".",
+    "plantuml.exportSubFolder": false,
+    "plantuml.render": "Local",
+
+    "triggerTaskOnSave.tasks": {
+        "generatePlantumlImage": [
+            "**/*.wsd",
+            "**/*.pu",
+            "**/*.puml",
+            "**/*.plantuml",
+            "**/*.iuml",
+        ]
+    }
+}

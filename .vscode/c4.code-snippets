@@ -1,0 +1,61 @@
+{
+    "C4 Container Diagram": {
+        "prefix" : "containerDiagram",
+        // "scope": "plantuml",
+        "description": "C4 Container Diagram",
+        "body": [
+            "@startuml ${1:Project} Container Diagram",
+            "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml",
+            "",
+            "Person_Ext(customer, \"external user\")",
+            "Person(user, \"employee\")",
+            "",
+            "Boundary(project, \"$1\") {",
+            "   Container(web, \"Website\", \"Azure Static Web App\")",
+            "   Rel(user, web, \"uses\")",
+            "   Rel(customer, web, \"uses\")",
+            "   ",
+            "   Container(auth, \"Authentication & Authorization Provider\", \"Azure Active Directory B2C\")",
+            "   Rel_R(web, auth, \"validates authentication and authorization with\")",
+            "   ",
+            "   Container(api, \"backend API\", \"Azure Function\")",
+            "   Rel(web, api, \"\")",
+            "",
+            "   Container(appi, \"Monitoring\", \"Azure Application Insights\")",
+            "   Lay_R(api, appi)",
+            "}",
+            "",
+            "System_Ext(extSys, \"External System\")",
+            "Rel_U(extSys, api, \"sends data to\")",
+            "",
+            "Person(tab, \"Applicatie Administrator\")",
+            "Rel_U(tab, appi, \"monitors the application using\")",
+            "",
+            "@enduml"
+        ]
+    },
+    "C4 Context Diagram": {
+        "prefix" : "contextDiagram",
+        // "scope": "plantuml",
+        "description": "C4 Context Diagram",
+        "body": [
+            "@startuml ${1:Project} Context Diagram",
+            "!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml",
+            "",
+            "Person_Ext(customer, \"external user\")",
+            "Person(user, \"employee\")",
+            "",
+            "System(project, \"$1\")",
+            "Rel(customer, project, \"uses\")",
+            "Rel(user, project, \"uses\")",
+            "",
+            "System_Ext(extSys, \"External System\")",
+            "Rel_U(extSys, project, \"sends data to\")",
+            "",
+            "Person(tab, \"Applicatie Administrator\")",
+            "Rel_U(tab, project, \"monitors the application using\")",
+            "",
+            "@enduml"
+        ]
+    }
+}

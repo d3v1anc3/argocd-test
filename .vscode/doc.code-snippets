@@ -1,0 +1,39 @@
+{
+    "Architecture Decision Record" :{
+        "prefix": "adr",
+        "description": "Architecture Decision Record Snippet",
+        "body": [
+            "# ADR${1:01} $8",
+            "",
+            "| Status    | ${2|Draft      ,Proposed   ,Accepted   ,Deprecated |}                                    |",
+            "| --------- | ---------------------------------------------- |",
+            "| Authors   | [Rob van der Velden](rob@nforza.nl) |",
+            "| Reviewers | ${3}                                               |",
+            "| Date      | $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE                                     |",
+            "",
+            "## Context",
+            "${4:Bij het ontwerpen van een softwareoplossing nemen we voortdurend belangrijke architectuur-beslissingen. Om deze beslissingen te socialiseren en de redenen achter de beslissing te delen, willen we de beslissing samen met de context en de gevolgen ervan vastleggen.}",
+            "## Opties",
+            "### ${5:Optie 1}",
+            "",
+            "### ${6:Optie 2}",
+            "",
+            "### ${7:Optie 3}",
+            "",
+            "## Argumenten",
+            "",
+            "## Beslissing",
+            "We zullen ${8:Architecture Decision Records gebruiken voor het vastleggen van architectuur keuzes.}",
+            "",
+            "## Consequenties",
+            "- ${9:Architectuurkeuzes worden vastgelegd.}",
+            "- ${10:De context van het besluit wordt vastgelegd.}",
+            "- ${11:De positieve en negatieve gevolgen van het besluit worden vastgelegd.}",
+            "",
+            "## Referenties",
+            "- ${12:[Documenting Architecture Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions) - Michael Nygard}",
+            "- ${13:[ADR Process](https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html) - AWS Prescriptive Guidance}",
+            "- ${14:[Architecture decision records](https://cloud.google.com/architecture/architecture-decision-records) - Google Cloud Architecture Center}"
+        ]
+    }
+}

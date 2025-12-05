@@ -1,0 +1,35 @@
+@startuml environment-setup
+skinparam packageStyle rectangle
+skinparam defaultTextAlignment center
+
+package "Kubernetes Cluster" {
+  package "Argo-CD" {
+    package "Namespace: argocd" {
+      artifact "App: argocd"
+    }
+  }
+
+  package "Infrastructure" {
+    package "Namespace: ns-infra_application_name-inf" {
+      artifact "App: app-infra_application_name-inf"
+    }
+
+    package "Namespace: kube-system" {
+      artifact "app-infra_application_name-inf"
+    }    
+  }
+
+  package "Acceptance" {
+    package "Namespace: ns-application_name-acc" {
+      artifact "app-application_name-acc"
+    }
+  }
+
+  package "Production" {
+    package "Namespace: ns-application_name-prd" {
+      artifact "app-application_name-prd"
+    }
+  }
+}
+
+@enduml
