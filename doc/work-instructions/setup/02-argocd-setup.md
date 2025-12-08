@@ -26,7 +26,7 @@ Open the Argo CD page by going to https://127.0.0.1/8080 and login with username
 #### Load the Argo CD Configuration
 
 ```powershell
-kubectl apply -f bootstrap/bootstrap.yaml
+kubectl apply -f bootstrap/argocd-bootstrap.yaml
 ```
 
 ## References
